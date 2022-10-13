@@ -67,7 +67,9 @@ export class ProductController {
 
       return res.status(HttpStatus.OK).json({
         statusCode: HttpStatus.OK,
-        message: products ? 'Cant result products' : 'Results product success',
+        message: products?.length
+          ? 'Results product success'
+          : 'Cant result products',
         data: products,
       });
     } catch (error) {
@@ -84,16 +86,24 @@ export class ProductController {
   async findOne(@Param('id') id: string, @Res() res: Response) {
     try {
       const product = await this.productService.findOne(id);
+
+      if (!product) {
+        return res.status(HttpStatus.BAD_REQUEST).json({
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Cant result product',
+        });
+      }
+
       return res.status(HttpStatus.OK).json({
         statusCode: HttpStatus.OK,
-        message: product ? 'Cant result product' : 'Find product sucess',
+        message: 'Find product sucess',
         data: product,
       });
     } catch (error) {
       console.log('errrorr', error);
       return res.status(HttpStatus.BAD_REQUEST).json({
         statusCode: HttpStatus.BAD_REQUEST,
-        message: error,
+        message: error.message,
       });
     }
   }

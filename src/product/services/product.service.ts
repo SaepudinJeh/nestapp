@@ -26,10 +26,10 @@ export class ProductService {
       .exec();
   }
 
-  async findOne(id: string) {
+  async findOne(id: string): Promise<any> {
     return (
       (await this.productModel
-        .findOne({ _id: id, isDelete: { $ne: false } })
+        .findOne({ _id: id, isDelete: { $ne: true } })
         .populate({
           path: 'user',
           select: '_id username email',
@@ -41,9 +41,6 @@ export class ProductService {
 
   async update(id: string, updateProductDto: UpdateProductDto) {
     const { user, ...rest } = updateProductDto;
-    console.log('asdasdasda', rest);
-    console.log('user', user);
-    console.log('id', id);
 
     return await this.productModel.findOneAndUpdate(
       { _id: id, user: user },

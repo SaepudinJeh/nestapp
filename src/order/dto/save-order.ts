@@ -1,15 +1,13 @@
 import { IsMongoId, IsNotEmpty } from 'class-validator';
-export class SaveProductDto {
+export class SaveOrderDto {
   @IsNotEmpty()
   @IsMongoId()
   user: string;
 
   @IsNotEmpty()
-  name: string;
+  @IsMongoId()
+  product: string;
 
   @IsNotEmpty()
-  desc: string;
-
-  @IsNotEmpty()
-  price: number;
+  qty: number;
 }

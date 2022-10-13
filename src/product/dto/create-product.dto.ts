@@ -1,4 +1,4 @@
-import { IsMongoId, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateProductDto {
@@ -16,8 +16,4 @@ export class CreateProductDto {
   @IsNotEmpty()
   @ApiProperty({ required: true, type: Number, default: 1000 })
   price: number;
-
-  @IsNotEmpty()
-  @ApiProperty({ required: true, type: Number, default: 1 })
-  qty: number;
 }
