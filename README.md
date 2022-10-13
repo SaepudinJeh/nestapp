@@ -4,11 +4,15 @@
   </a>
 </p>
 
-# Nest.js + MongoDB + Docker Starter
+# Nest.js + MongoDB + Docker
 
-This is starter project for Nest.js, MongoDB and Docker. You can easily start your production ready containered project by forking this repo.
+This is project for Nest.js, MongoDB and Docker. You can easily start your production ready containered project by forking this repo.
 
-Copy_by: https://github.com/aikrom
+## Documentation API
+
+```bash
+wkwkwkw
+```
 
 ## How to use
 
