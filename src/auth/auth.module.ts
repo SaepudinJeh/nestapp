@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthController } from './controllers/auth.controller';
 import { Auth, AuthModel } from './entities/auth.entity';
 import { AuthService } from './services/auth.service';
+import { JwtStrategy } from './strategies/local.strategy';
 
 @Module({
   imports: [
@@ -20,6 +21,6 @@ import { AuthService } from './services/auth.service';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, JwtStrategy],
 })
 export class AuthModule {}

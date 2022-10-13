@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { mongo_uri } from './shared/config/mongo.config';
 import { AuthModule } from './auth/auth.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
       'mongodb+srv://wkwkwk:wkwkwk@cluster0.ked2wqs.mongodb.net/?retryWrites=true&w=majority',
     ),
     AuthModule,
+    ProductModule,
     // MongooseModule.forRootAsync({
     //   imports: [ConfigModule],
     //   useFactory: (configService: ConfigService) => ({
