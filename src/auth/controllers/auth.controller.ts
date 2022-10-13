@@ -22,8 +22,6 @@ export class AuthController {
     @Res() response: Response,
   ) {
     try {
-      console.log('wkwkkw', createAuthDto);
-
       const hashPassword = await bcrypt.hash(
         createAuthDto.password,
         parseInt(process.env.SALT_HASH),

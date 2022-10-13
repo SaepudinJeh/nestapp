@@ -40,8 +40,6 @@ export class ProductController {
     try {
       const userId = req.user['_id'];
 
-      console.log('wkwkwkkw', userId);
-
       await this.productService.create({
         ...createProductDto,
         user: userId,
@@ -119,7 +117,6 @@ export class ProductController {
     @Res() res: Response,
   ) {
     try {
-      console.log('wkwkwk', updateProductDto);
       const userId = req.user['_id'];
 
       const result = await this.productService.update(id, {
@@ -133,8 +130,6 @@ export class ProductController {
           message: 'Cant update product!',
         });
       }
-
-      console.log('result', result);
       return res.status(HttpStatus.OK).json({
         statusCode: HttpStatus.OK,
         message: 'Update product sucess',
