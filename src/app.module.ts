@@ -4,12 +4,13 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { ProductModule } from './product/product.module';
 import { OrderModule } from './order/order.module';
-import { mongo_uri } from './shared/config/mongo.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(mongo_uri),
+    MongooseModule.forRoot(
+      'mongodb+srv://wkwkwk:wkwkwk@cluster0.ked2wqs.mongodb.net/?retryWrites=true&w=majority',
+    ),
     AuthModule,
     ProductModule,
     OrderModule,
