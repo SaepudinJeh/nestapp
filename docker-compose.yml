@@ -12,24 +12,34 @@ services:
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
       - 9229:9229
+    networks:
+      - webnet
     command: npm run start:debug
     env_file:
       - .env
     depends_on:
       - mongo
   mongo:
-    image: mongo:latest
+    image: mongo:focal
     container_name: 'nest_mongo'
     volumes:
       - mongodb_data_container:/data/db
     env_file:
       - .env
     environment:
-      - MONGO_INITDB_DATABASE=${MONGO_DATEBASE}
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      # - MONGO_INITDB_DATABASE=${MONGO_DATEBASE}
+      - MONGO_INITDB_ROOT_USERNAME=wkwkwk
+      - MONGO_INITDB_ROOT_PASSWORD=wkwkwk
+    networks:
+      - webnet
     ports:
-      - ${MONGO_PORT}:${MONGO_PORT}
+      - 27017:27017
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
 networks:
   webnet:
 volumes:
