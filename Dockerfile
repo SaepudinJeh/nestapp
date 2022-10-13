@@ -6,9 +6,9 @@ COPY package*.json ./
 
 RUN npm install -g npm@8.19.2
 
-# RUN npm install
+RUN npm install
 
-RUN npm install --only=development
+# RUN npm install --only=development
 
 COPY . .
 
