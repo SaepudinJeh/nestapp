@@ -34,6 +34,13 @@ Create and run docker container on production
 $ docker build -t app-name . && docker run app-name -p 8080:3000
 ```
 
+## Open Documentation API (Swagger)
+
+```bash
+# set path url '/api' for open swagger
+localhost:3000/api
+```
+
 ## Running the app without Docker and MongoDB
 
 ```bash
