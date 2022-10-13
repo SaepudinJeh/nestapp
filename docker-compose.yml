@@ -27,18 +27,15 @@ services:
     env_file:
       - .env
     environment:
-      # - MONGO_INITDB_DATABASE=${MONGO_DATEBASE}
-      - MONGO_INITDB_ROOT_USERNAME=wkwkwk
-      - MONGO_INITDB_ROOT_PASSWORD=wkwkwk
+      - MONGO_INITDB_DATABASE=${MONGO_DATEBASE}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
     networks:
       - webnet
     ports:
-      - 27017:27017
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      - ${MONGO_PORT}:${MONGO_PORT}
+    expose:
+      - ${MONGO_PORT}
     restart: unless-stopped
 networks:
   webnet:
