@@ -8,12 +8,6 @@
 
 This is project for Nest.js, MongoDB and Docker. You can easily start your production ready containered project by forking this repo.
 
-## Documentation API
-
-```bash
-https://nestappgeneration.herokuapp.com/
-```
-
 ## How to use
 
 Install dependencies
